@@ -32,7 +32,7 @@ class mindfit:
                     "Bipolar disorders", "Eating disorders",
                     "Anxiety disorders", "Drug use disorders",
                     "Depressive disorders", "Alcohol use disorders",
-                    "Mental disorders"],
+                    "DALY"],
             axis=1)
 
         # Drop the rows containing null values
@@ -40,18 +40,13 @@ class mindfit:
 
         # Drop Country Codes
         temp.drop(columns=["Code"], inplace=True)
-
-        # Make round figure
-        for col in ["Schizophrenia disorders", "Bipolar disorders",
-                    "Eating disorders", "Anxiety disorders",
-                    "Drug use disorders", "Depressive disorders",
-                    "Alcohol use disorders", "Mental disorders"]:
-            temp[col] = temp[col].apply(lambda x: round(x, 2))
+        self.countries = list(temp["Country"].drop_duplicates())
 
         self.country_encoder = LabelEncoder()
         self.country_encoder.fit(y=temp["Country"])
         temp["Country"] = self.country_encoder.transform(temp["Country"])
         
+
         if inplace:
             self.dataset = temp
             print("✔ Data Preprocessed.")
@@ -59,21 +54,53 @@ class mindfit:
             return temp
         
     def build(self):
-        X = self.dataset.drop(columns=["Mental disorders"])
-        y = self.dataset["Mental disorders"]
+        X = self.dataset.drop(columns=["DALY"])
+        y = self.dataset["DALY"]
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-        model = RandomForestRegressor()
-        model.fit(X_train, y_train)
+        self.model = RandomForestRegressor()
+        self.model.fit(X_train, y_train)
         print("✔ Model Build Successfully")
-        y_predict = model.predict(X_test)
+        y_predict = self.model.predict(X_test)
         mae = round(mean_absolute_error(y_test, y_predict), 2)
         mse = round(mean_squared_error(y_test, y_predict), 2)
         rmse = round(np.sqrt(mse), 2)
         r2s = round(r2_score(y_test, y_predict), 2)
-        print(f"""✔ Model Evaluation (Metrics)
+        print(f"""🡲 Model Evaluation (Metrics)
         1. Mean Absolute Error: {mae}
         2. Mean Squared Error: {mse}
         3. Root Mean Squared Error: {rmse}
         4. R2 Score: {r2s} {'✅ Success!' if r2s >= 0.9 else '⚠️ Unexpected!'}""")
         
-    
+    def predict(self, country, year, schizophrenia, bipolar, eating,
+                    anxiety, drug_use,
+                    depressive, alcohol_use):
+        if country not in self.countries:
+            print(f"⚠️ Country '{country}' is not known to us.")
+            return
+        
+        country = self.country_encoder.transform(["Afghanistan"])[0]
+
+        sample = pandas.DataFrame(columns=["Country", "Year", "Schizophrenia disorders",
+            "Bipolar disorders", "Eating disorders",
+            "Anxiety disorders", "Drug use disorders",
+            "Depressive disorders", "Alcohol use disorders"], data=[[country, year, schizophrenia, bipolar, eating,
+            anxiety, drug_use,
+            depressive, alcohol_use]])
+        daly = round(self.model.predict(sample)[0], 3)
+        print(f"🡲 DALYs (Disability-Adjusted Life Years): {daly}%.")
+        print("  on overall population.")
+        
+    def plot_relation(self, condition):
+        plot.figure(figsize=(16, 9))
+        seaborn.jointplot(data=self.dataset, 
+                        x=condition, y="DALY", 
+                        kind="hex", 
+                        marginal_ticks=True, marginal_kws={"bins":30, "fill":False})
+        plot.savefig(f"{condition} impact on DALY.png")
+
+        
+if __name__ == "__main__":
+    ai = mindfit()
+    ai.build()
+    ai.predict("Afghanistan", 1990,0.22320578,0.70302314,0.12770003,4.713314,0.45,4.996118,0.44)
+    ai.plot_relation("Alcohol use disorders")
