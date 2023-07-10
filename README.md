@@ -2,13 +2,15 @@
 
 # Mindfit AI
 
+DALY (Disability-Adjusted Life Year) is a measure that quantifies the burden of disease, combining years of healthy life lost due to premature death and disability. MindFit-AI utilizes machine learning techniques, specifically Random Forest regression, to predict DALY percentages for mental health disorders. By providing accurate predictions and insights, MindFit-AI empowers evidence-based decision-making, resource allocation, and support strategies, contributing to overall well-being.
+
 ## Overview
 
-MindFit-AI is an open-source project aimed at analyzing and predicting DALY percentages for a comprehensive range of mental health disorders. Leveraging datasets from reputable sources like Our World in Data, the project utilizes machine learning techniques, specifically Random Forest regression from scikit-learn, to provide accurate predictions. The covered disorders include schizophrenia, bipolar disorders, eating disorders, anxiety disorders, drug use disorders, depressive disorders, and alcohol use disorders. MindFit-AI offers personalized insights, aids in resource allocation and decision-making, and fosters transparency and collaboration as a FOSS project hosted on GitHub.
+MindFit-AI is an open-source project aimed at analyzing and predicting DALY percentages for a comprehensive range of mental health disorders. Leveraging datasets from reputable sources like Our World in Data, the project utilizes machine learning techniques, specifically Random Forest Regression from Scikit-Learn, to provide accurate predictions. The covered disorders include schizophrenia, bipolar disorders, eating disorders, anxiety disorders, drug use disorders, depressive disorders, and alcohol use disorders. MindFit-AI offers personalized insights, aids in resource allocation and decision-making, and fosters transparency and collaboration as a FOSS project hosted on GitHub.
 
 ## Problem Statement
 
-Mental health disorders are a prevalent global concern, affecting millions of individuals worldwide. Existing methods often struggle to provide accurate predictions of the impact of these disorders on DALY percentages, hindering effective resource allocation and support strategies. There is a critical need for data-driven insights to better understand, predict, and address the impact of mental health disorders. MindFit-AI aims to address these challenges by offering accurate predictions and insights on DALY percentages, empowering informed decision-making and improved support strategies.
+Mental health disorders are a prevalent global concern, affecting millions of individuals worldwide. Existing methods often struggle to provide accurate predictions of the impact of these disorders on DALY percentages, hindering effective resource allocation and support strategies. There is a critical need for data-driven insights to better understand, predict, and address the impact of mental health disorders. MindFit-AI aims to address these challenges by offering accurate predictions and insights on DALY percentages, empowering informed decision-making, and improved support strategies.
 
 ## Datasets
 
