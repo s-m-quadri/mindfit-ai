@@ -1,8 +1,14 @@
+![Header](https://github.com/s-m-quadri/mindfit-ai/assets/88645248/2bcfbf12-26ff-409c-9798-7ec59ad07b8e)
+
 # Mindfit AI
 
-## Description
+## Overview
 
-Mindfit AI is a machine learning project focused on promoting mental fitness. It utilizes data analysis and predictive modeling to provide insights, predictions, and personalized recommendations for mental well-being.
+MindFit-AI is an open-source project aimed at analyzing and predicting DALY percentages for a comprehensive range of mental health disorders. Leveraging datasets from reputable sources like Our World in Data, the project utilizes machine learning techniques, specifically Random Forest regression from scikit-learn, to provide accurate predictions. The covered disorders include schizophrenia, bipolar disorders, eating disorders, anxiety disorders, drug use disorders, depressive disorders, and alcohol use disorders. MindFit-AI offers personalized insights, aids in resource allocation and decision-making, and fosters transparency and collaboration as a FOSS project hosted on GitHub.
+
+## Problem Statement
+
+Mental health disorders are a prevalent global concern, affecting millions of individuals worldwide. Existing methods often struggle to provide accurate predictions of the impact of these disorders on DALY percentages, hindering effective resource allocation and support strategies. There is a critical need for data-driven insights to better understand, predict, and address the impact of mental health disorders. MindFit-AI aims to address these challenges by offering accurate predictions and insights on DALY percentages, empowering informed decision-making and improved support strategies.
 
 ## Datasets
 
@@ -14,8 +20,8 @@ The project is based on the following datasets:
 
 Please refer to the respective dataset links for more details and usage guidelines.
 
-## Disclaimer
+## Acknowledgments
 
-**Please note that Mindfit AI is currently under development.**
+![Credits](https://github.com/s-m-quadri/mindfit-ai/assets/88645248/3dc306fc-76eb-4a3b-80a6-9ea4781014f7)
 
-The code and functionality provided in this repository are subject to change as the project progresses. It is recommended to exercise caution when using the code in a production environment.
+We extend our sincere appreciation to the collaborative efforts of the Edunet Foundation, IBM SkillsBuild team, and DIEMS (Deogiri Institute of Engineering and Management Studies, Aurangabad). The Edunet Foundation provided dedicated teachers, while IBM SkillsBuild contributed valuable study materials. The success of this project highlights the power of collaboration in addressing critical challenges in mental health.
