@@ -15,7 +15,6 @@ class mindfit:
         self.get_dataset()
         self.preprocess_dataset()
         print("✔ Ready to build.")
-        print("  Hint: use build() method.")
         
 
     def get_dataset(self):
@@ -59,7 +58,7 @@ class mindfit:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
         self.model = RandomForestRegressor()
         self.model.fit(X_train, y_train)
-        print("✔ Model Build Successfully")
+        print("✔ Model Build Successfully.")
         y_predict = self.model.predict(X_test)
         mae = round(mean_absolute_error(y_test, y_predict), 2)
         mse = round(mean_squared_error(y_test, y_predict), 2)
@@ -97,6 +96,7 @@ class mindfit:
                         kind="hex", 
                         marginal_ticks=True, marginal_kws={"bins":30, "fill":False})
         plot.savefig(f"{condition} impact on DALY.png")
+        # Click Run to proceed
 
         
 if __name__ == "__main__":
@@ -104,3 +104,5 @@ if __name__ == "__main__":
     ai.build()
     ai.predict("Afghanistan", 1990,0.22320578,0.70302314,0.12770003,4.713314,0.45,4.996118,0.44)
     ai.plot_relation("Alcohol use disorders")
+    
+    
